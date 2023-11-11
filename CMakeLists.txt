@@ -8,6 +8,8 @@ include_directories(${Boost_INCLUDE_DIR} include)
 
 file(GLOB LIB_SOURCE_FILES src/lib.cpp)
 add_library(mbt-static STATIC ${LIB_SOURCE_FILES})
+include(CTest)
+add_subdirectory(test)
 
 add_library(mbt-shared SHARED ${LIB_SOURCE_FILES})
 target_link_libraries(mbt-shared PUBLIC mbt-static)
