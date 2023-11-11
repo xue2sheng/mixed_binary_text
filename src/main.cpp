@@ -3,6 +3,7 @@
 #include <boost/program_options.hpp>
 #include <exception>
 #include <string>
+#include "lib.h"
 
 using std::cerr;
 using std::cout;
@@ -12,6 +13,12 @@ using std::string;
 namespace po = boost::program_options;
 
 int main(int ac, char** av){
+
+    std::string input;
+    std::string output;
+    std::string value;
+    std::string start;
+    std::string end;
 
     po::options_description desc("Allowed options");
     try {
@@ -32,14 +39,28 @@ int main(int ac, char** av){
             cout << desc << "\n";
             return 0;
         }
-/*
-        if (vm.count("compression")) {
-            cout << "Compression level was set to "
-                 << vm["compression"].as<double>() << ".\n";
-        } else {
-            cout << "Compression level was not set.\n";
+
+        if (vm.count("input"))
+            input = vm["input"].as<string>();
+        else {
+            cerr << "missing required --input commandline argument";
+            return -1;
         }
-        */
+
+        if (vm.count("output"))
+            output = vm["output"].as<string>();
+        else {
+            cerr << "missing required --output commandline argument";
+            return -1;
+        }
+
+        // optional
+        if (vm.count("value"))
+            value = vm["value"].as<string>();
+        if (vm.count("start"))
+            start = vm["start"].as<string>();
+        if (vm.count("end"))
+            end = vm["end"].as<string>();
     }
     catch(exception& e) {
         cerr << "error: " << e.what() << "\n";
@@ -50,5 +71,7 @@ int main(int ac, char** av){
         cerr << "Exception of unknown type!\n";
         return 1;
     }
-    return 0;
+
+    return process(input.c_str(), input.size(), output.c_str(), output.size(), value.c_str(),
+        value.size(), start.c_str(), start.size(), end.c_str(), end.size());
 }
