@@ -10,9 +10,9 @@ extern "C" {
 #endif
 
 int process(const char* input,
-    const unsigned int input_size, const char* output, const unsigned int output_size,
-    const char* value, const unsigned int value_size,
-    const char* start, const unsigned int start_size, const char* end, const unsigned int end_size);
+            const unsigned int input_size, const char* output, const unsigned int output_size,
+            const char* value, const unsigned int value_size,
+            const char* start, const unsigned int start_size, const char* end, const unsigned int end_size);
 
 #ifdef __cplusplus
 }

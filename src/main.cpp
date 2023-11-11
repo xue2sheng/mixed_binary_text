@@ -13,7 +13,6 @@ using std::string;
 namespace po = boost::program_options;
 
 int main(int ac, char** av){
-
     std::string input;
     std::string output;
     std::string value;
@@ -73,5 +72,5 @@ int main(int ac, char** av){
     }
 
     return process(input.c_str(), input.size(), output.c_str(), output.size(), value.c_str(),
-        value.size(), start.c_str(), start.size(), end.c_str(), end.size());
+                   value.size(), start.c_str(), start.size(), end.c_str(), end.size());
 }
