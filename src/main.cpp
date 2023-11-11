@@ -1,5 +1,4 @@
 #include <iostream>
-//#include <iterator>
 #include <boost/program_options.hpp>
 #include <exception>
 #include <string>
@@ -71,6 +70,6 @@ int main(int ac, char** av){
         return 1;
     }
 
-    return process(input.c_str(), input.size(), output.c_str(), output.size(), value.c_str(),
-                   value.size(), start.c_str(), start.size(), end.c_str(), end.size());
+    return process(input.c_str(), input.size(), output.c_str(), output.size(),
+        value.c_str(), value.size(), start.c_str(), start.size(), end.c_str(), end.size());
 }
